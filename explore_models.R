@@ -1,7 +1,7 @@
 
 rm(list = ls())
 
-source("../project_support.r")
+source("./project_support.r")
 
 dir_init("./temp")
 
@@ -10,19 +10,19 @@ dir_init("./temp")
 
 print("load models and extract their posterior samples")
 
-load("./input/m1.rdata")
+load("./output/m1.rdata")
 m1_post <- extract.samples(m1)
 
-load("./input/m1_alt1.rdata")
+load("./output/m1_alt1.rdata")
 m1_alt1_post <- extract.samples(m1_alt1)
 
-load("./input/m1_alt2.rdata")
+load("./output/m1_alt2.rdata")
 m1_alt2_post <- extract.samples(m1_alt2)
 
-load("./input/m2.rdata")
+load("./output/m2.rdata")
 m2_post <- extract.samples(m2)
 
-load("./input/m2_alt1.rdata")
+load("./output/m2_alt1.rdata")
 m2_alt1_post <- extract.samples(m2_alt1)
 
 
@@ -105,7 +105,7 @@ print("calculate posterior predictions and counterfactual predictions")
 
 density_threshold <- 0.8
 
-d <- read.csv("./input/RegrDat.csv", stringsAsFactors = FALSE)
+d <- read.csv("./output/RegrDat.csv", stringsAsFactors = FALSE)
 
 # add centering
 d$Mean_c <- d$Mean - 0.5
@@ -594,7 +594,7 @@ logistic(mean(m2_post$a + m2_post$b_sc * (-0.1))) # an SC of 0.4, revised model
 
 #########
 
-dir_init("./output")
+# dir_init("./output")
 
 files <- list.files("./temp", full.names = TRUE)
 file.copy(files, "./output")

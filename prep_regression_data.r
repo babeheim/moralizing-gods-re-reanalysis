@@ -1,6 +1,6 @@
 
 rm(list = ls())
-source("../project_support.r")
+source("./project_support.r")
 
 dir_init("./temp")
 

@@ -1,6 +1,6 @@
 
 rm(list = ls())
-source("../project_support.r")
+source("./project_support.r")
 
 dir_init("./temp")
 
@@ -8,7 +8,7 @@ dir_init("./temp")
 
 print("Load regression dataset")
 
-d <- read.csv("./input/RegrDat.csv", stringsAsFactors = FALSE)
+d <- read.csv("./output/RegrDat.csv", stringsAsFactors = FALSE)
 
 
 
@@ -292,7 +292,7 @@ dev.off()
 
 #########
 
-dir_init("./output")
+# dir_init("./output")
 
 files <- list.files("./temp", full.names = TRUE)
 file.copy(files, "./output")

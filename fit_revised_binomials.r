@@ -1,6 +1,6 @@
 
 rm(list = ls())
-source("../project_support.r")
+source("./project_support.r")
 
 dir_init("./temp")
 
@@ -8,7 +8,7 @@ dir_init("./temp")
 
 print("load the regression data frame")
 
-d <- read.csv("./input/RegrDat.csv", stringsAsFactors = FALSE)
+d <- read.csv("./output/RegrDat.csv", stringsAsFactors = FALSE)
 
 # add centering
 d$Mean_c <- d$Mean - 0.5
@@ -56,7 +56,8 @@ mg_missing <- sum(dm$MG_missing == 1)
 missing_rows <- which(dm$MG_missing == 1)
 
 expect_equal(mg_known_present, 299)
-expect_equal(mg_known, 397) #Changed from 311 after recoding unknown moralizing gods despite writing as known absent
+expect_equal(mg_known, 398) #Changed from 311 after recoding unknown moralizing gods despite writing as known absent
+# bab: it's 398 rather than 397 when using beheimetal verson dataset
 
 imputation_prob <- mg_known_present / mg_known # occurance of 1's in known data
 
@@ -204,7 +205,7 @@ save(m2_alt1, file = "./temp/m2_alt1.rdata")
 
 ############
 
-dir_init("./output")
+# dir_init("./output")
 
 files <- list.files("./temp", full.names = TRUE)
 file.copy(files, "./output")
